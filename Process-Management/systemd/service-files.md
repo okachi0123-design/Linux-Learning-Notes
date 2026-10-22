@@ -210,5 +210,24 @@ WantedBy=multi-user.target
 
 ---
 
+## 6. サービスファイルの管理・操作
+
+### systemd-analyze verify
+- サービスファイルの構文や設定内容を検証する
+- 使う場面：サービスファイルを作成・編集した後、起動前に設定ミスを確認したいとき
+
+```bash
+sudo systemd-analyze verify /etc/systemd/system/<service-name>.service
+```
+
+### systemctl daemon-reload
+- systemdにUnitファイルの設定を再読み込みさせる
+- 使う場面：サービスファイルを作成・変更した後、その内容をsystemdに反映させたいとき
+
+```bash
+sudo systemctl daemon-reload
+```
+- ＊ 起動中のプロセスを変更したときはreload後にrestartが必要
+
 (https://www.freedesktop.org/software/systemd/man/latest/systemd.service.html)
 - [systemd.exec 公式マニュアル](https://www.freedesktop.org/software/systemd/man/latest/systemd.exec.html)
